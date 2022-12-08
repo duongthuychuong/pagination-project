@@ -5,7 +5,7 @@ const paginate = (followers) => {
     const start = index * itemPerPage;
     return followers.slice(start, start + itemPerPage);
   });
-  console.log(newArray);
+  return newArray;
 };
 
 export default paginate;

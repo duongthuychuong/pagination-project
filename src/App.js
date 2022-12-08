@@ -1,8 +1,24 @@
-import React, { useState, useEffect } from 'react'
-import { useFetch } from './useFetch'
-import Follower from './Follower'
+import React, { useState, useEffect } from "react";
+import { useFetch } from "./useFetch";
+import Follower from "./Follower";
 function App() {
-  return <h2>pagination starter</h2>
+  const { data, loading } = useFetch();
+  console.log(data, loading);
+  return (
+    <main>
+      <div className="section-title">
+        <h1>{loading ? "Loading..." : "Pagination"}</h1>
+        <div className="underline"></div>
+      </div>
+      <section className="followers">
+        <div className="container">
+          {data.map((follower) => {
+            return <Follower key={follower.id} {...follower} />;
+          })}
+        </div>
+      </section>
+    </main>
+  );
 }
 
-export default App
+export default App;
